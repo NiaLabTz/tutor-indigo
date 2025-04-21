@@ -8,122 +8,128 @@
 }
 
 .footer-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  @media (max-width: 768px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 0.875rem;
+  background-color: #faf8f8;
+  padding: 4rem 2rem;
+
+  a,
+  .copyright {
+    text-decoration: none;
+    color: #64748b !important;
     font-size: 0.875rem;
-    background-color: #FAF8F8;
-    padding: 4rem 2rem;
-  
-    a,
-    .copyright {
-      text-decoration: none;
-      color: #64748b !important;
-      font-size: 0.875rem;
+  }
+
+  a {
+    transition: 0.3s ease;
+
+    &:hover {
+      color: $secondary;
     }
-  
-    a {
-      transition: 0.3s ease;
-  
-      &:hover {
-        color: $secondary;
-      }
-  
-      i {
-        margin-right: 0.5rem;
-      }
+
+    i {
+      margin-right: 0.5rem;
     }
-  
-    .footer-top {
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1024px;
+    margin: 0 auto;
+    height: 100%;
+    gap: 6rem;
+
+    @media (max-width: 768px) {
+        gap: 2rem;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+        margin-bottom: 2rem;
+    }
+
+    .footer-top-inner {
+      padding-left: 1rem;
+      padding-right: 1rem;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      max-width: 1024px;
-      margin: 0 auto;
-      height: 100%;
-      gap: 6rem;
-  
-      @media (max-width: 768px) {
-        gap: 0rem;
+      justify-content: center;
+      height: 50%;
+      gap: 2rem;
+      flex-wrap: wrap;
+
+      .links {
+        display: flex;
+        gap: 3rem;
       }
-  
-  
-      .footer-top-inner {
-        padding-left: 1rem;
-        padding-right: 1rem;
+
+      .inner {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        height: 50%;
-        gap: 2rem;
-        flex-wrap: wrap;
-  
-        .links {
-          display: flex;
-          gap: 3rem;
-        }
-  
-        .inner {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: space-between;
-          height: 100%;
-        }
-  
-        .links-container h6 {
-          margin-bottom: 0.5rem;
-        }
+        justify-content: space-between;
+        height: 100%;
+      }
+
+      .links-container h6 {
+        margin-bottom: 0.5rem;
       }
     }
-  
-    .footer-left {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      height: 50%;
-  
-      .footer-logo img {
-        width: 130px;
-      }
-  
-      .wrapper-logo img {
-        width: 130px;
-        margin-right: 1rem;
-      }
-    }
-  
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      justify-content: end;
-    }
-  
-    .copyright {
-        font-size: 0.685rem;
-    }
-    
-    .lucide {
-        width: 16px;
-        height: 16px;
-    }
-
-    .links-with-icon {
-        gap: 0.25rem;
-        a {
-            gap: 0.25rem;
-        }
-    }
-
-    .links-container {
-        display: flex;
-        flex-direction: column;
-    }
-
   }
 
-  // FOOTER
+  .footer-left {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 50%;
+
+    .footer-logo img {
+      width: 130px;
+    }
+
+    .wrapper-logo img {
+      width: 130px;
+      margin-right: 1rem;
+    }
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+
+  .copyright {
+    font-size: 0.685rem;
+  }
+
+  .lucide {
+    width: 16px;
+    height: 16px;
+  }
+
+  .links-with-icon {
+    gap: 0.25rem;
+    a {
+      gap: 0.25rem;
+    }
+  }
+
+  .links-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// FOOTER
 footer a:active,
 .instagram a:hover,
 footer a:hover {
@@ -131,4 +137,3 @@ footer a:hover {
   border-bottom: 0 !important;
   color: $secondary !important;
 }
-
