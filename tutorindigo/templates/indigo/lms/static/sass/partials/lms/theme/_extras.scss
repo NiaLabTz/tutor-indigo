@@ -8,6 +8,7 @@ body, h1, h2, h3, h4, h5, h6, p, label, button {
   font-family: $font-family-title !important;
 }
 html {
+  scroll-behavior: smooth;
   background: transparent !important;
 }
 body, body.view-profile {
