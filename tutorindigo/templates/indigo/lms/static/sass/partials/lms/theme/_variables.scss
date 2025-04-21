@@ -1,5 +1,13 @@
-$primary: {{ INDIGO_PRIMARY_COLOR }};
+
 $primary-light: #F2F7F8;
+
+$primary: #0b3d3d;
+$tagsBg: rgba(0, 132, 132, 0.826);
+$secondary: #4fd2c2;
+$accent: #D4FDF7;
+$textColor: #1b1b1b;
+$textColorOffWhite: #f1f1f1;
+$textColorWhite: #ffffff;
 
 // Theme fonts
 $font-family-title: 'Inter', sans-serif;
@@ -20,12 +28,13 @@ $big-screen: 1200px;
 
 // Introducing dark-theme variables
 
-$primary-d: #AEC7F6;
+$primary-d: #D4FDF7;
 $primary-light-d: #292A2C;
 $light-drak-d: #374151;
 $text-color-d: #F8F8F8;
 $text-color-primary: #DDDFE2;
-$border-color-d: #777792;
+// $border-color-d: #777792;
+$border-color-d: #0c4c4c;
 $light-overlay-d: #36383B;
 $danger-d: #FFA07A;
 $success-d: #54CF5E;

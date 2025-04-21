@@ -9,11 +9,12 @@ from openedx.core.djangolib.markup import HTML, Text
 %>
 
 <main id="main" aria-label="Content" tabindex="-1">
-    <section class="home style-logout">
+    <section class="home">
       <header>
-        <div class="outer-wrapper">
-          <div class="title">
+        <div class="outer-wrapper hero-container">
+          <!-- <div class="title"> -->
             <div class="heading-group">
+              <img class="heroBkImg" src="/static/indigo/images/baseRound.svg" alt="">
               % if homepage_overlay_html:
                 ${homepage_overlay_html | n, decode.utf8}
               % else:
@@ -21,30 +22,26 @@ from openedx.core.djangolib.markup import HTML, Text
               % endif
             </div>
             % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
-              <div class="course-search">
+            <!-- removed the search bar from hero -->
+              <!-- <div class="course-search">
                 <form method="get" action="/courses">
-                  <!-- UPDATE IN INDIGO2.1 - Change the structure for search bar  -->
-                  <div class="search-field-wrapper">
-                    <div class="button-holder">
-                      <button class="search-button" type="submit">
-                        ${_("Search")}
-                      </button>
-                    </div>
-                    <label class="input-holder"><span class="sr">${_("Search for a course")}</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4ZM2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 9.29583 13.5892 10.4957 12.8907 11.4765L17.7071 16.2929C18.0976 16.6834 18.0976 17.3166 17.7071 17.7071C17.3166 18.0976 16.6834 18.0976 16.2929 17.7071L11.4765 12.8907C10.4957 13.5892 9.29583 14 8 14C4.68629 14 2 11.3137 2 8Z" fill="#9CA3AF"></path>
-                        </svg>
-                      <input class="search-input" name="search_query" type="text" placeholder="${_("Search for a course")}"></input>
-                    </label>
-                  </div>
+                  <label><span class="sr">${_("Search for a course")}</span>
+                    <input class="search-input" name="search_query" type="text" placeholder="${_("Search for a course")}"></input>
+                  </label>
+                  <button class="search-button" type="submit">
+                    <span class="icon fa fa-search" aria-hidden="true"></span><span class="sr">${_("Search")}</span>
+                  </button>
                 </form>
-              </div>
+              </div> -->
             % endif
 
-          </div>
+          <!-- </div> -->
 
           <%include file="index_promo_video.html" />
         </div>
+        
+        <meta content="#0b3d3d" data-react-helmet="true" name="theme-color" />
+        <meta name="theme-color" content="#0b3d3d" />
 
       </header>
       <%include file="${courses_list}" />
@@ -68,6 +65,8 @@ from openedx.core.djangolib.markup import HTML, Text
          }
       })
    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 </%block>
 
 % if show_signup_immediately is not UNDEFINED:

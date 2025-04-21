@@ -124,6 +124,7 @@ header.global-header {
         left: 15px;
         top: 18px;
         .line {
+            background-color: white !important;
             height: 2px;
             &:nth-child(2), &:nth-child(3) {
                 top: 6px;
@@ -133,7 +134,29 @@ header.global-header {
             }
         }
     }
+
 }
+
+.global-header .nav-links .secondary a.register-btn {
+    color: $primary !important;
+    background-color: white !important;
+    border: 0 !important;
+    &:hover, &.active {
+        color: $primary !important;
+        background-color: $secondary !important;
+    }
+}
+
+.global-header .nav-links .secondary a.sign-in-btn {
+    &:hover {
+        background: $secondary !important;
+        color: $primary !important;
+    }
+    border: 0 !important;
+    background-color: $primary-d !important;
+    color: $primary !important;
+}
+
 .mobile-menu {
     position: absolute;
     left: 0;
@@ -141,7 +164,7 @@ header.global-header {
     z-index: 9999;
     margin: 0;
     border: none;
-    border-bottom: 2px solid $primary;
+    border-bottom: 1px solid $primary;
     width: 100%;
     .mobile-nav-link {
         a {
@@ -160,7 +183,9 @@ header.global-header {
 }
 .header-container {
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0rem 15px;
+    border-bottom: solid 1px #0c4c4c;
+    background-color: $primary;
     max-width: 1600px;
     box-sizing: border-box;
     &:after {
@@ -170,9 +195,13 @@ header.global-header {
     }
 }
 
+.indigo-dark-theme .header-container {
+    border-bottom: solid 1px #0c4c4c !important;
+}
+
 .theme-toggle-button{
     position: relative;
-    display: {% if INDIGO_ENABLE_DARK_TOGGLE %}flex{% else %}none{% endif %};
+    display: flex;
     align-items: center;
     margin-right: 0 !important;
 
@@ -245,7 +274,23 @@ header.global-header {
     }
 }
 
+body.indigo-dark-theme .global-header .nav-links .secondary .btn-holder .nav-item .btn.register-btn {
+    color: $primary !important;
+    background-color: white !important;
+    border: 0 !important;
+    &:hover, &.active {
+        color: $primary !important;
+        background-color: $secondary !important;
+    }
+}
 
+body.indigo-dark-theme .global-header .nav-links .secondary .btn-holder .nav-item .btn.sign-in-btn {
+    &:hover {
+        background: $secondary !important;
+        color: $primary !important;
+    }
+    border: 0 !important;
+}
 
 body.indigo-dark-theme {
     background: $body-bg-d !important;
@@ -275,7 +320,7 @@ body.indigo-dark-theme {
     }
     header.global-header {
         background: $body-bg-d;
-        box-shadow: 0px 1px 2px 0px rgba(255, 255, 255, 0.8), 0px 1px 3px 0px rgba(255, 255, 255, 0.1);
+        // box-shadow: 0px 1px 2px 0px rgba(255, 255, 255, 0.8), 0px 1px 3px 0px rgba(255, 255, 255, 0.1);
         .nav-links {
             .main {
                 .nav-tab {
