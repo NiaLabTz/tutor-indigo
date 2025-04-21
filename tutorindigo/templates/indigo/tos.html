@@ -1,0 +1,259 @@
+<%page expression_filter="h" />
+<%! from django.utils.translation import ugettext as _ %>
+    <%inherit file="../main.html" />
+
+    <%block name="pagetitle">${_("Terms of Service")}</%block>
+
+    <main class="py-4 niaTos" id="main" aria-label="Content" tabindex="-1">
+        <section class="container about">
+
+            <%block name="pagecontent">
+                <div class="tosContent shadow p-5">
+                    <h2>
+                        <%block name="pageheader">${page_header or _('Nia Lab eLearning (https://nia.tz) Terms of Service and Privacy Policy')}</%block>
+                    </h2>
+
+                    <p class="text-muted">Last updated: February 2024</p>
+                    <div>
+                        <h5>1. Introduction</h5>
+                        <p class="text-muted ml-3">Welcome to our eLearning platform. By using our platform, you agree
+                            to the following terms and conditions:</p>
+
+                        <div class="mb-4 lh-base">
+                            <h5>2. Membership</h5>
+                            <p class="text-muted ml-3">2.1 You must be at least 18 years old to register on our
+                                platform.</p>
+                            <p class="text-muted ml-3">2.2 Provide accurate personal information during registration</p>
+                        </div>
+
+                        <div class="mb-4 lh-base">
+                            <h5>3. Payments</h5>
+                            <p class="text-muted ml-3">3.1 Pay the required fee for access to our services.</p>
+                            <p class="text-muted ml-3">3.2 All fees are nonrefundable and unrelated to any other
+                                payments.</p>
+                            <p class="text-muted ml-3">3.3 Pay fees on time to maintain access to our services.</p>
+                        </div>
+
+                        <div class="mb-4 lh-base">
+                            <h5>4. Security</h5>
+                            <p class="text-muted ml-3">4.1 Keep your username and password secure. Do not share them
+                                with others.</p>
+                            <p class="text-muted ml-3">4.2 Notify us immediately if you believe your username and
+                                password have been compromised.</p>
+                        </div>
+
+                        <div class="mb-4 lh-base">
+                            <h5>5. Copyright</h5>
+                            <p class="text-muted ml-3">5.1 Platform content, including learning materials, is unique to
+                                our platform and owned by us or our licensors.</p>
+                            <p class="text-muted ml-3">5.2 Use platform content for personal purposes only. Commercial
+                                use requires written permission.</p>
+                        </div>
+
+                        <div class="mb-4 lh-base">
+                            <h5>6. Termination</h5>
+                            <p class="text-muted ml-3">6.1 We may terminate our services without notice or reason.</p>
+                            <p class="text-muted ml-3">6.2 You may terminate our services by deleting your account.</p>
+                        </div>
+
+                        <div class="mb-4 lh-base">
+                            <h5>7. Amendments to Terms and Conditions</h5>
+                            <p class="text-muted ml-3">7.1 We may change these terms and conditions at any time.</p>
+                            <p class="text-muted ml-3">7.2 Review these terms regularly to ensure agreement.</p>
+                        </div>
+
+                        <div class="mb-4 lh-base">
+                            <h5>8. Conflict Resolution</h5>
+                            <p class="text-muted ml-3">8.1 Contact us first to resolve any service related conflicts.
+                            </p>
+                            <p class="text-muted ml-3">8.2 Unresolved conflicts will be resolved according to Tanzanian
+                                law.</p>
+                        </div>
+
+                        <div class="mb-4 lh-base">
+                            <hr>
+                            <h4>Privacy Policy</h4>
+                            <hr>
+                            <h5>1. Data Collection</h5>
+                            <p class="text-muted ml-3">We collect personal data during registration to identify users
+                                and manage course access.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>2. Data Use</h5>
+                            <p class="text-muted ml-3">Data is used solely for providing access to purchased courses and
+                                not shared without consent.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>3. Third-party Services</h5>
+                            <p class="text-muted ml-3">Our platform relies on third-party hosting and payment services.
+                                We are not responsible for their availability.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>4. Liability</h5>
+                            <p class="text-muted ml-3">We are responsible for course content but not third-party service
+                                availability.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>5. Amendments to Privacy Policy</h5>
+                            <p class="text-muted ml-3">Changes to the Privacy Policy will be communicated promptly.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>6. Contact Information</h5>
+                            <p class="text-muted ml-3">For questions or concerns, contact us at contact@nia.tz</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>7. Age Requirement</h5>
+                            <p class="text-muted ml-3">Users must be 18 or older to use the platform. Users under 18
+                                require parental consent.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>8. Refund Policy</h5>
+                            <p class="text-muted ml-3">No refunds are provided for courses.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>9. Platform Accessibility</h5>
+                            <p class="text-muted ml-3">Access the platform at https://nia.tz</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>10. Course Content Copyright</h5>
+                            <p class="text-muted ml-3">Respect intellectual property rights. Course content is
+                                copyrighted.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>11. Course Access Duration</h5>
+                            <p class="text-muted ml-3">Access to enrolled courses is valid for one year.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>12. Removal of Free Courses</h5>
+                            <p class="text-muted ml-3">Free courses may be removed without notice.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tosContent shadow-lg mt-5 p-5">
+                    <h2>
+                        Nia Lab eLearning (https://nia.tz) Terms of Service and Privacy Policy
+                    </h2>
+
+                    <p class="text-muted">Taarifa ya mwisho: 10 Februari 2024</p>
+
+                    <div class="">
+                        <h5>1. Utangulizi</h5>
+                        <p class="text-muted ml-3">Karibu kwenye jukwaa letu la elearning. Kwa kutumia jukwaa letu,
+                            unakubaliana na vigezo na masharti yafuatayo:</p>
+
+                        <div class="mb-4 lh-base">
+                            <h5>2. Uanachama</h5>
+                            <p class="text-muted ml-3">2.1 Lazima uwe na umri wa angalau miaka 18 kujiandikisha kwenye
+                                jukwaa letu.</p>
+                            <p class="text-muted ml-3">2.2 Toa maelezo sahihi ya kibinafsi wakati wa usajili.</p>
+                        </div>
+
+                        <div class="mb-4 lh-base">
+                            <h5>3. Malipo</h5>
+                            <p class="text-muted ml-3">3.1 Lipa ada inayohitajika kupata upatikanaji wa huduma zetu.</p>
+                            <p class="text-muted ml-3">3.2 Ada zote ni za kipekee, hazirudishwi na hazihusiani na malipo
+                                mengine yoyote.</p>
+                            <p class="text-muted ml-3">3.3 Lipa ada kwa wakati ili kudumisha upatikanaji wa huduma zetu.
+                            </p>
+                        </div>
+
+                        <div class="mb-4 lh-base">
+                            <h5>4. Usalama</h5>
+                            <p class="text-muted ml-3">4.1 Weka jina lako la mtumiaji na nenosiri salama. Usimpe mtu
+                                mtumiaji mwingine.</p>
+                            <p class="text-muted ml-3">4.2 Tuarifu mara moja ikiwa unadhani jina lako la mtumiaji na
+                                nenosiri vimejulikana kwa wengine.</p>
+                        </div>
+
+                        <div class="mb-4 lh-base">
+                            <h5>5. Hakimiliki</h5>
+                            <p class="text-muted ml-3">5.1 Yaliyomo kwenye jukwaa letu ni ya kipekee na ni mali yetu au
+                                washirika wetu.</p>
+                            <p class="text-muted ml-3">5.2 Tumia yaliyomo kwa madhumuni ya kibinafsi tu. Matumizi ya
+                                biashara yanahitaji idhini ya maandishi.</p>
+                        </div>
+
+                        <div class="mb-4 lh-base">
+                            <h5>6. Kusitisha</h5>
+                            <p class="text-muted ml-3">6.1 Tunaweza kusitisha huduma zetu bila taarifa au sababu.</p>
+                            <p class="text-muted ml-3">6.2 Unaweza kusitisha huduma kwa kufuta akaunti yako.</p>
+                        </div>
+
+                        <div class="mb-4 lh-base">
+                            <h5>7. Marekebisho ya Masharti na Vigezo</h5>
+                            <p class="text-muted ml-3">7.1 Tunaweza kubadilisha masharti haya wakati wowote.</p>
+                            <p class="text-muted ml-3">7.2 Angalia mara kwa mara ili kuhakikisha unaelewa na kukubaliana
+                                nayo.</p>
+                        </div>
+
+                        <div class="mb-4 lh-base">
+                            <h5>8. Utatuzi wa Migogoro</h5>
+                            <p class="text-muted ml-3">8.1 Wasiliana nasi kwanza kutatua migogoro.</p>
+                            <p class="text-muted ml-3">8.2 Migogoro isiyopatiwa suluhisho itashughulikiwa kulingana na
+                                sheria za Tanzania.</p>
+                        </div>
+
+                        <div class="mb-4 lh-base">
+                            <hr>
+                            <h4>Sera ya Faragha</h4>
+                            <hr>
+                            <h5>1. Ukusanyaji wa Data</h5>
+                            <p class="text-muted ml-3">Tunakusanya data ya kibinafsi wakati wa usajili kwa madhumuni ya
+                                kumtambua mtumiaji na kusimamia upatikanaji wa kozi.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>2. Matumizi ya Data</h5>
+                            <p class="text-muted ml-3">Data hutumiwa tu kutoa upatikanaji wa kozi zilizonunuliwa na
+                                haishirikishwi bila idhini.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>3. Huduma za Watu Wengine (washarika wetu)</h5>
+                            <p class="text-muted ml-3">Jukwaa letu linategemea huduma za hosting na malipo kutoka kwa
+                                watu wengine. Hatuhusiki kwa upatikanaji wao.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>4. Uwajibikaji</h5>
+                            <p class="text-muted ml-3">Tunasimamia yaliyomo katika kozi, lakini si upatikanaji wa huduma
+                                za watu wengine. Tutajitahidi kuhakikisha jukwaa linapatikana wakati wote.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>5. Marekebisho ya Sera ya Faragha</h5>
+                            <p class="text-muted ml-3">Mabadiliko kwa Sera ya Faragha yatawasilishwa kwa watumiaji kwa
+                                wakati.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>6. Taarifa za Mawasiliano</h5>
+                            <p class="text-muted ml-3">Kwa maswali au dukuduku, wasiliana nasi kupitia barua pepe
+                                contact@nia.tz</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>7. Mahitaji ya Umri</h5>
+                            <p class="text-muted ml-3">Watumiaji lazima wawe na umri wa miaka 18 au zaidi. Watumiaji
+                                chini ya umri huo wanahitaji idhini ya mzazi.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>8. Sera ya Kurudishiwa Fedha</h5>
+                            <p class="text-muted ml-3">Hakuna kurudishiwa fedha kwa kozi.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>9. Upatikanaji wa Jukwaa (nia.tz)</h5>
+                            <p class="text-muted ml-3">Pata upatikanaji kwenye jukwaa letu kwa https://nia.tz</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>10. Hakimiliki ya Yaliyomo ya Kozi</h5>
+                            <p class="text-muted ml-3">Heshimu haki miliki! Yaliyomo kwenye kozi ni ya hakimiliki.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>11. Muda wa Kupata Kozi</h5>
+                            <p class="text-muted ml-3">Upatikanaji wa kozi ulizojiandikisha ni kwa mwaka mmoja.</p>
+                        </div>
+                        <div class="mb-4 lh-base">
+                            <h5>12. Kuondoa Kozi za Bure</h5>
+                            <p class="text-muted ml-3">Kozi za bure zinaweza kuondolewa bila taarifa.</p>
+                        </div>
+                    </div>
+                </div>
+            </%block>
+        </section>
+    </main>
