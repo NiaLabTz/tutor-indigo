@@ -1,7 +1,6 @@
 ## mako
 <%page expression_filter="h"/>
 <%!
-  from datetime import datetime
   from django.urls import reverse
   from django.utils.translation import gettext as _
   from lms.djangoapps.branding.api import get_footer
@@ -10,7 +9,8 @@
 <% footer = get_footer(is_secure=is_secure) %>
 <% icp_license_info = getattr(settings, 'ICP_LICENSE_INFO', {})%>
 <%namespace name='static' file='static_content.html'/>
-<!-- NEW IN INDIGO update footer -->
+
+
 % if uses_bootstrap:
 <div class="wrapper wrapper-footer">
   <footer id="footer" class="tutor-container"
@@ -54,30 +54,8 @@
     </nav>
     {% endif %}
   </div>
-  <span class="copyright-site">Copyrights ©${datetime.now().year}. All Rights Reserved.</span>
-  % endif
-    <div class="colophon">
-
-      % if context.get('include_language_selector', footer_language_selector_is_enabled()):
-          <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
-      % endif
-
-      ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-        <p class="copyright">${footer['copyright']}
-            % if icp_license_info.get('icp_license'):
-              ${u" | {text}".format(text=icp_license_info.get('text'))}
-              <a href="${icp_license_info.get('icp_license_link', '#')}">
-                  ${u" {icp}".format(icp=icp_license_info.get('icp_license'))}
-              </a>
-            % endif
-        </p>
-    </div>
-  </footer>
-</div>
 % else:
-<!-- NEW IN INDIGO update footer -->
-  <div class="wrapper wrapper-footer">
-    <footer id="footer" class="tutor-container"
+    <footer id="footer-openedx" class="grid-container footer"
       ## When rendering the footer through the branding API,
       ## the direction may not be set on the parent element,
       ## so we set it here.
@@ -133,11 +111,73 @@
                 <a href="${icp_license_info.get('icp_license_link', '#')}">
                     ${u" {icp}".format(icp=icp_license_info.get('icp_license'))}
                 </a>
-              % endif
-          </p>
+              </p>
+          </div>
+           ## Please leave this link and use one of the logos provided
+           ## The OpenEdX link may be hidden when this view is served
+           ## through an API to partner sites (such as marketing sites or blogs),
+           ## which are not technically powered by OpenEdX.
+           % if not hide_openedx_link:
+            <div class="footer-about-openedx">
+              <p>
+                <a href="/">
+                  <a  href="${footer['openedx_link']['url']}" rel="noopener" target="_blank">
+                    <img src="${static.url('images/openedx-logo.png')}" alt="${footer['openedx_link']['title']}" width="140" />
+                  </a>
+              </p>
+            </div>
+            %endif
+          </div>         
+        </div>
+        
+        <div class="footer-top-inner">
+          <div class="inner">
+            
+            <div class="links">
+              <div class="about-company links-container">
+                <h6 class="fw-bold mb-4">Social media</h6>
+                <div class="instagram links-with-icon d-flex align-items-center mb-2">
+                  <a class="d-flex align-items-center" href="https://instagram.com/nialab2021"><i data-lucide="instagram" class="icon"></i>Instagram</a>
+                </div>
+              </div>
+    
+              <div class="jump-to links-container">
+                <h6 class="mb-4 fw-bold">Browse</h6>
+                <div class="mb-2 gap-y-4 flex-column d-flex" aria-label="${_('Legal')}">
+                  <a class="links-with-icon mb-4 d-flex align-items-center" href="/tos" target="_blank"><i class="icon" data-lucide="book-open"></i>Terms of Service</a>
+                  <a class="links-with-icon mb-4 d-flex align-items-center" href="/privacy" target="_blank"><i class="icon" data-lucide="shield"></i>Privacy Policy</a>
+                  <a class="links-with-icon mb-4 d-flex align-items-center" href="https://nia.co.tz/manual"><i class="icon" data-lucide="book-open-text"></i>User manual</a>
+                  <a class="links-with-icon mb-4 d-flex align-items-center" href="https://nia.tz/courses"><i class="icon" data-lucide="book"></i>courses</a>
+                </div>
+         </p>
+    
+         % if context.get('include_language_selector', footer_language_selector_is_enabled()):
+         <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
+     % endif
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        
       </div>
+      
+      <div class="footer-copyright mx-auto pb-3">
+        <div class="divider"></div>
+        ## Site operators: Please do not remove this paragraph! This attributes
+            ## back to edX and makes your acknowledgement of edX's trademarks clear.
+        <p class="copyright">${footer['copyright']}
+          % if icp_license_info.get('icp_license'):
+           ${u" | {text}".format(text=icp_license_info.get('text'))}
+           <a href="${icp_license_info.get('icp_license_link', '#')}">
+               ${u" {icp}".format(icp=icp_license_info.get('icp_license'))}
+           </a>
+         % endif
+      </div>
+    </div>
+
     </footer>
-  </div>
 % endif
 % if include_dependencies:
   <%static:js group='base_vendor'/>
