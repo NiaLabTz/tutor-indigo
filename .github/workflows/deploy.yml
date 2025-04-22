@@ -1,0 +1,100 @@
+name: Deploy via SSH
+
+on:
+    push:
+        branches:
+            - release
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            # Optional: Checkout code on the runner.
+            # While the actual deploy runs on the server, checking out code
+            # here can be useful if you need files from the repo for the deploy script itself,
+            # but for simple git pull on the server, it's not strictly necessary.
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Deploy via SSH
+              uses: appleboy/ssh-action@v1.2.2 # Use a stable version
+              with:
+                  host: ${{ secrets.SSH_HOST }}
+                  username: ${{ secrets.SSH_USER }}
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  script: |
+                      # --- Deployment Commands Start Here ---
+                      # These commands run on your server after successfully SSHing in.
+                      # Adjust the path and commands to match your setup.
+
+                      # 1. Navigate to your application's repository directory
+                      #    Replace /path/to/your/application with the actual path on your server
+                      echo "Navigating to tutor config directory..."
+                      cd "$(tutor config printroot)"
+                      if [ $? -ne 0 ]; then
+                        echo "Error: Directory /path/to/your/application not found or cannot access."
+                        exit 1 # Fail the step if directory change fails
+                      fi
+                      echo "Currently in: $(pwd)"
+
+                      # 2. Pull the latest code from the repository
+                      echo "Deleting outdated directory..."
+                      if [ -d "./tutor-indigo"]; then
+                        echo "Directory tutor-indigo exists. Deleting..."
+                        echo ${{ secrets.SSH_HOST_PASSWORD }} | sudo -S rm -rf ./tutor-indigo
+                      else
+                        echo "Directory tutor-indigo does not exist. No need to delete."
+                      fi
+
+                      echo "Pulling latest code..."
+                      git clone https://github.com/NiaLabTz/tutor-indigo.git
+                      if [ $? -ne 0 ]; then
+                        echo "Error during git clone."
+                        exit 1
+                      fi
+                      echo "Git clone complete."
+
+                      # 3. Install indigo from source
+                      echo "Installing Indigo from source..."
+                      echo ${{ secrets.SSH_HOST_PASSWORD }} | sudo -S pip3 install -e ./tutor-indigo
+                      if [ $? -ne 0 ]; then
+                        echo "Error during installing indigo from source."
+                        exit 1
+                      fi
+                      tutor plugins enable indigo
+                      if [ $? -ne 0 ]; then
+                        echo "Error during enabling indigo plugin."
+                        exit 1
+                      fi
+                      echo "Finished installing indigo from source..."
+
+                      # 4. Settheme command
+                      echo "Running settheme command..."
+                      tutor local do settheme indigo
+                      if [ $? -ne 0 ]; then
+                        echo "Error during running the settheme command."
+                        exit 1
+                      fi
+                      echo "Running settheme command complete..."
+
+                      # 5. Rebuild openedx image
+                      echo "Rebuilding openedx image..."
+                      tutor images build openedx
+                      if [ $? -ne 0 ]; then
+                        echo "Error during rebuilding openedx image."
+                        exit 1
+                      fi
+                      echo "Rebuilding openedx image complete..."
+
+                      # 6. Reboot Docker containers
+                      echo "Rebooting Docker containers..."
+                      tutor local reboot -d
+                        if [ $? -ne 0 ]; then
+                          echo "Error during rebooting Docker containers."
+                          exit 1
+                        fi
+                        echo "Rebooting Docker containers complete..."
+
+                        echo "Deployment script finished."
+                        # --- Deployment Commands End Here ---
