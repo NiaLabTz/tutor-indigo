@@ -25,22 +25,19 @@ jobs:
                   key: ${{ secrets.SSH_PRIVATE_KEY }}
                   script: |
                       # --- Deployment Commands Start Here ---
-                      # These commands run on your server after successfully SSHing in.
-                      # Adjust the path and commands to match your setup.
 
                       # 1. Navigate to your application's repository directory
-                      #    Replace /path/to/your/application with the actual path on your server
                       echo "Navigating to tutor config directory..."
                       cd "$(tutor config printroot)"
                       if [ $? -ne 0 ]; then
-                        echo "Error: Directory /path/to/your/application not found or cannot access."
+                        echo "Error: tutor config printroot not found or cannot access."
                         exit 1 # Fail the step if directory change fails
                       fi
                       echo "Currently in: $(pwd)"
 
                       # 2. Pull the latest code from the repository
                       echo "Deleting outdated directory..."
-                      if [ -d "./tutor-indigo"]; then
+                      if [ -d "./tutor-indigo" ]; then
                         echo "Directory tutor-indigo exists. Deleting..."
                         echo ${{ secrets.SSH_HOST_PASSWORD }} | sudo -S rm -rf ./tutor-indigo
                       else
@@ -90,11 +87,11 @@ jobs:
                       # 6. Reboot Docker containers
                       echo "Rebooting Docker containers..."
                       tutor local reboot -d
-                        if [ $? -ne 0 ]; then
-                          echo "Error during rebooting Docker containers."
-                          exit 1
-                        fi
-                        echo "Rebooting Docker containers complete..."
+                      if [ $? -ne 0 ]; then
+                        echo "Error during rebooting Docker containers."
+                        exit 1
+                      fi
+                      echo "Rebooting Docker containers complete..."
 
-                        echo "Deployment script finished."
-                        # --- Deployment Commands End Here ---
+                      echo "Deployment script finished."
+                      # --- Deployment Commands End Here ---
