@@ -15,6 +15,19 @@ $(document).ready(function() {
     function setThemeToggleBtnState(){
       const theme = $.cookie(themeCookie);
       $("#toggle-switch-input").prop("checked", theme === 'dark');
+      updateAccessibility();
+    }
+
+    function updateAccessibility() {
+      const theme = $.cookie(themeCookie);
+      const textWrapper = $('#theme-label');
+      if (theme === 'dark') {
+        textWrapper.text('Switch to Light Mode');
+        textWrapper.attr('aria-checked', 'true');
+      } else {
+        textWrapper.text('Switch to Dark Mode');
+        textWrapper.attr('aria-checked', 'false');
+      }
     }
     
     function toggleTheme(){
