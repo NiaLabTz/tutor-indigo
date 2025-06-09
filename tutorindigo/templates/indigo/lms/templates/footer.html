@@ -15,7 +15,7 @@
 
   <div class="container-fluid wrapper-footer">
     <footer>
-     
+
     </footer>
   </div>
 % else:
@@ -59,12 +59,12 @@
               </p>
             </div>
             %endif
-          </div>         
+          </div>
         </div>
-        
+
         <div class="footer-top-inner">
           <div class="inner">
-            
+
             <div class="links">
               <div class="about-company links-container">
                 <h6 class="fw-bold mb-4">Social media</h6>
@@ -72,17 +72,17 @@
                   <a class="d-flex align-items-center" href="https://instagram.com/nialab2021"><i data-lucide="instagram" class="icon"></i>Instagram</a>
                 </div>
               </div>
-    
+
               <div class="jump-to links-container">
                 <h6 class="mb-4 fw-bold">Browse</h6>
                 <div class="mb-2 gap-y-4 flex-column d-flex" aria-label="${_('Legal')}">
                   <a class="links-with-icon mb-4 d-flex align-items-center" href="/tos" target="_blank"><i class="icon" data-lucide="book-open"></i>Terms of Service</a>
                   <a class="links-with-icon mb-4 d-flex align-items-center" href="/privacy" target="_blank"><i class="icon" data-lucide="shield"></i>Privacy Policy</a>
                   <a class="links-with-icon mb-4 d-flex align-items-center" href="https://nia.co.tz/manual"><i class="icon" data-lucide="book-open-text"></i>User manual</a>
-                  <a class="links-with-icon mb-4 d-flex align-items-center" href="https://nia.tz/courses"><i class="icon" data-lucide="book"></i>Courses</a>
+                  <a class="links-with-icon mb-4 d-flex align-items-center" href="/courses"><i class="icon" data-lucide="book"></i>Courses</a>
                 </div>
          </p>
-    
+
          % if context.get('include_language_selector', footer_language_selector_is_enabled()):
          <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
      % endif
@@ -92,9 +92,9 @@
           </div>
         </div>
 
-        
+
       </div>
-      
+
       <div class="footer-copyright mx-auto pb-3">
         <div class="divider"></div>
         ## Site operators: Please do not remove this paragraph! This attributes
