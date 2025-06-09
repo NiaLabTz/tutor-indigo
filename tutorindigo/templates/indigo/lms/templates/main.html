@@ -350,30 +350,56 @@ from common.djangoapps.pipeline_mako import render_require_js_path_overrides
         //End if
       }
 
-      if (document.querySelector(".courses-listing-item")) {
-        const courseItems = document.querySelectorAll(".courses-listing-item");
-        console.log('here')
-
-        courseItems.forEach((item) => {
-          gsap.fromTo(
-            item,
-            { opacity: 0, y: 50 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1.3,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: item,
-                start: "top 80%",
-                end: "bottom 20%",
-                toggleActions: "play none none none",
-              },
-            }
-          );
-        });
+      function animateCourseItems() {
+        if (document.querySelector(".courses-listing-item")) {
+          const courseItems = document.querySelectorAll(".courses-listing-item");
+          console.log('Animating course items:', courseItems.length);
+          
+          courseItems.forEach((item) => {
+            if (item.dataset.animated === "true") return;
+            
+            item.dataset.animated = "true";
+            
+            gsap.fromTo(
+              item,
+              { opacity: 0, y: 50 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 1.3,
+                ease: "power3.out",
+                scrollTrigger: {
+                  trigger: item,
+                  start: "top 80%",
+                  end: "bottom 20%",
+                  toggleActions: "play none none none",
+                },
+              }
+            );
+          });
+        }
       }
-
+      
+      animateCourseItems();
+      
+      if (window.location.pathname.includes('/courses')) {
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+              setTimeout(animateCourseItems, 100);
+            }
+          });
+        });
+        
+        const targetNode = document.getElementById('courses-container') || document.querySelector('.courses-container');
+        if (targetNode) {
+          observer.observe(targetNode, { childList: true, subtree: true });
+          
+          document.addEventListener('discovery:results:updated', function() {
+            setTimeout(animateCourseItems, 100);
+          });
+        }
+      }
     });
    </script>
    
